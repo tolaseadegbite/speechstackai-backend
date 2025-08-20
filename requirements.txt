@@ -1,0 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cu110
+torchaudio==0.7.1
+torch==1.7.1+cu110
+TTS==0.5.0
+huggingface_hub
+numpy==1.19.5
+scipy==1.10.1
+boto3
+soundfile
+fastapi
+pydantic 
