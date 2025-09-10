@@ -80,16 +80,20 @@ def text_chunker(text: str, max_chunk_size: int = 500):
 class TTSPlatform:
     # Voice configuration is correct
     VOICE_CONFIG = {
+        
         "Abọ́sẹ̀dé": {"path": "YV/female_yoruba_tts", "checkpoint": "checkpoint_500000.pth.tar"},
         "Adéṣínà":  {"path": "YV/male_yoruba_tts",   "checkpoint": "checkpoint_500000.pth.tar"},
+        
         "Ọmọ́wùnmí": {"path": "YV/bible_to_female", "checkpoint": "checkpoint_420000.pth.tar"},
         "Akinolú":  {"path": "YV/bible_to_male",   "checkpoint": "checkpoint_420000.pth.tar"},
+        
         "Àrẹ̀mú":      {"path": "Af_lang/yor",      "checkpoint": "checkpoint_1100000.pth"},
         "Kofi":       {"path": "Af_lang/ewe",      "checkpoint": "checkpoint_1100000.pth"},
         "Danjuma":     {"path": "Af_lang/hau",      "checkpoint": "checkpoint_1100000.pth"},
         "Uzima":   {"path": "Af_lang/lin",      "checkpoint": "checkpoint_1100000.pth"},
         "Kwesi":    {"path": "Af_lang/twi-aku",  "checkpoint": "checkpoint_1100000.pth"},
         "Kwame":     {"path": "Af_lang/twi-asa",  "checkpoint": "checkpoint_1100000.pth"},
+        
     }
 
     @modal.enter()
@@ -161,10 +165,10 @@ def main():
     model = TTSPlatform()
     
     # Let's test one of the new voices to be sure it works
-    test_voice = "Akinolú"
+    test_voice = "Adéṣínà"
     print(f"--- Testing /generate endpoint for '{test_voice}' voice ---")
     generate_url = model.generate.get_web_url()
-    yoruba_text = "Àkọlé: Àṣà Ìsọmọlórúkọ ní Ilẹ̀ Yorùbá: Ohun Pàtàkì Tó Kọjá Orúkọ Lásán"
+    yoruba_text = "Àkọ́lé: Àṣà Ìsọmọlórúkọ ní Ilẹ̀ Yorùbá: Ohun Pàtàkì Tó Kọjá Orúkọ Lásán"
     
     payload = {"text": yoruba_text, "voice": test_voice}
     response = requests.post(generate_url, json=payload)
